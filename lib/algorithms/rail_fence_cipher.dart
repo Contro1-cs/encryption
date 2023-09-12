@@ -1,4 +1,5 @@
 import 'package:encryption/widgets/buttons.dart';
+import 'package:encryption/widgets/custom_snackbars.dart';
 import 'package:encryption/widgets/text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,8 +12,8 @@ class RailFenceCipher extends StatefulWidget {
 }
 
 class _RailFenceCipherState extends State<RailFenceCipher> {
-  TextEditingController _encrypt = TextEditingController(text: 'abc');
-  TextEditingController _encryptedMsg = TextEditingController(text: 'abc');
+  final TextEditingController _encrypt = TextEditingController();
+  final TextEditingController _encryptedMsg = TextEditingController();
   String first = 'abc', second = 'abc';
   @override
   Widget build(BuildContext context) {
@@ -35,29 +36,31 @@ class _RailFenceCipherState extends State<RailFenceCipher> {
           Expanded(
             child: Column(
               children: [
-                encryptTextField(context,'Encrypt your message' ,_encrypt),
+                encryptTextField(context, 'Encrypt your message', _encrypt),
                 const SizedBox(height: 10),
                 encryptButton(
                   context,
                   () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    _encryptedMsg.text = '';
-                    first = '';
-                    second = '';
-                    setState(
-                      () {
-                        for (int i = 0; i < _encrypt.text.length; i++) {
-                          if (_encrypt.text[i] != ' ') {
+                    if (_encrypt.text.isEmpty) {
+                      errorSnackbar(context, 'Enter your message first');
+                    } else {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      _encryptedMsg.text = '';
+                      first = '';
+                      second = '';
+                      setState(
+                        () {
+                          for (int i = 0; i < _encrypt.text.length; i++) {
                             if (i % 2 == 0) {
                               first += _encrypt.text[i];
                             } else {
                               second += _encrypt.text[i];
                             }
                           }
-                        }
-                        _encryptedMsg.text = '$first$second';
-                      },
-                    );
+                          _encryptedMsg.text = '$first$second';
+                        },
+                      );
+                    }
                   },
                 ),
               ],

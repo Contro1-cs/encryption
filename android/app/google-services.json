@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "63872735015",
+    "project_id": "encryption-algo",
+    "storage_bucket": "encryption-algo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63872735015:android:8e6217fce590887045bb02",
+        "android_client_info": {
+          "package_name": "com.example.encryption"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJLUcbDOocrMMG167MPZTNS9MdtBpQ1yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

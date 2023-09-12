@@ -15,10 +15,33 @@ TextEditingController _plainText = TextEditingController();
 TextEditingController _encryptedMsg = TextEditingController();
 String _arrangedLetters = '';
 
-List<String> alphabets = List.generate(
-  26,
-  (index) => String.fromCharCode('a'.codeUnitAt(0) + index),
-);
+List<String> alphabets = [
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z'
+];
 
 class _PlayfairCipherState extends State<PlayfairCipher> {
   rearrangeLetter() {
@@ -51,8 +74,7 @@ class _PlayfairCipherState extends State<PlayfairCipher> {
                 border: Border.all(color: Colors.black),
               ),
               child: Text(
-                (_arrangedLetters[index] == 'i' ||
-                        _arrangedLetters[index] == 'j')
+                (_arrangedLetters[index] == 'i')
                     ? 'i/j'
                     : _arrangedLetters[index],
                 style: GoogleFonts.poppins(),
@@ -73,7 +95,6 @@ class _PlayfairCipherState extends State<PlayfairCipher> {
   @override
   void initState() {
     super.initState();
-    rearrangeLetter();
   }
 
   @override
